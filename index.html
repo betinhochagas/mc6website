@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MC6 Corporate Professional - Soluções em Redes e Wi-Fi</title>
+    <title>MC6 Tecnologia e Eventos - Soluções em Redes e Wi-Fi</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -140,7 +140,7 @@
     <header id="main-header" class="bg-transparent fixed top-0 left-0 right-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-extrabold text-white" id="logo">
-                <i class="fas fa-satellite-dish mr-2"></i>MC6 Corp
+                <i class="fas fa-satellite-dish mr-2"></i>MC6
             </a>
             <div class="hidden md:flex items-center space-x-8 font-semibold" id="desktop-menu">
                 <a href="#servicos" class="text-gray-300 hover:text-white transition-colors">Serviços</a>
@@ -151,7 +151,7 @@
                 </a>
             </div>
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <button id="mobile-menu-button" class="text-white focus:outline-none" aria-label="Abrir menu">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
@@ -274,8 +274,9 @@
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Vamos Projetar a Rede Ideal para sua Empresa?</h2>
                         <p class="text-lg text-gray-400 mb-6">Preencha o formulário e um de nossos engenheiros de rede entrará em contato para uma análise inicial do seu projeto, sem compromisso.</p>
                         <ul class="space-y-3 text-gray-300 mt-6">
-                            <li class="flex items-center"><i class="fas fa-phone mr-3 text-[#1f6feb]"></i> (47) 9XXXX-XXXX</li>
-                            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-[#1f6feb]"></i> contato@mc6corp.com.br</li>
+                            <li class="flex items-start"><i class="fas fa-map-marker-alt mr-3 mt-1 text-[#1f6feb]"></i> <span>Rua Frei Estanislau Schaette, 111 Sobreloja - Sala 1B - Água Verde, Blumenau - SC, 89037-001</span></li>
+                            <li class="flex items-center"><i class="fas fa-phone mr-3 text-[#1f6feb]"></i> (47) 3288-3002</li>
+                            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-[#1f6feb]"></i> contato@mc6.com.br</li>
                              <li class="flex items-center"><i class="fab fa-whatsapp mr-3 text-[#1f6feb]"></i> Fale conosco pelo WhatsApp</li>
                         </ul>
                     </div>
@@ -283,8 +284,20 @@
                         <form action="#" method="POST">
                             <h3 class="text-xl font-bold mb-5 text-white">Solicite um orçamento:</h3>
                             <div class="space-y-4">
-                                <input type="text" placeholder="Nome Completo" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]">
-                                <input type="email" placeholder="E-mail Corporativo" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]">
+                                <input type="text" placeholder="Nome Completo" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]" required>
+                                <input type="text" placeholder="Nome da empresa (opcional)" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]">
+                                <input type="email" placeholder="E-mail Corporativo" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]" required>
+                                <div>
+                                    <label for="service-type" class="sr-only">Selecione o tipo de serviço</label>
+                                    <select id="service-type" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]" required>
+                                        <option value="">Selecione o tipo de serviço</option>
+                                        <option value="eventos">Wi-Fi para Eventos</option>
+                                        <option value="residencia">Residência</option>
+                                        <option value="cabeamento">Cabeamento Estruturado</option>
+                                        <option value="consultoria">Consultoria em TI</option>
+                                        <option value="microinformatica">Microinformática</option>
+                                    </select>
+                                </div>
                                 <textarea placeholder="Descreva sua necessidade" rows="4" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]"></textarea>
                                 <button type="submit" class="w-full tech-glow-button text-white font-bold py-3 px-8 rounded-lg">Enviar para Análise</button>
                             </div>
@@ -298,7 +311,7 @@
     <!-- =========== Footer =========== -->
     <footer class="bg-[#0d1117] border-t border-[#30363d]">
         <div class="container mx-auto px-6 py-8 text-center text-gray-500">
-            <p>&copy; 2024 MC6 Corp. Todos os direitos reservados. | Blumenau, SC</p>
+            <p>&copy; 2024 MC6 . Todos os direitos reservados. | Desenvolvido por <a href="#" class="text-[#1f6feb] hover:underline">Roberto Chagas</a></p>
         </div>
     </footer>
 
@@ -337,7 +350,7 @@
 
             // Typing effect
             const typingTextElement = document.getElementById('typing-text');
-            const textToType = "Monitoramento e Engenharia de Redes Corporativas";
+            const textToType = "Monitoramento e Engenharia de Redes";
             let i = 0;
             function typeWriter() {
                 if (i < textToType.length) {
