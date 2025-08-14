@@ -6,33 +6,41 @@ Status Atual: Fase de Design e Desenvolvimento Concluída. Pronto para a Fase de
 ✅ Fase 1: Features Implementadas (Concluído)
 UI/UX e Design:
 
-[✔️] Design "Dark Mode" Tecnológico: Implementação de uma interface escura, moderna e profissional, alinhada à identidade de uma empresa de TI.
+[✔️] Design "Dark Mode" Tecnológico: Interface escura, moderna e profissional.
 
-[✔️] Layout Totalmente Responsivo: O site se adapta perfeitamente a desktops, tablets e smartphones.
+[✔️] Layout Totalmente Responsivo: Adaptação para desktops, tablets e smartphones.
 
-[✔️] Animações de Entrada (AOS.js): Elementos surgem suavemente na tela, criando uma experiência de navegação dinâmica.
+[✔️] Hero Section Robusta: Layout dividido com imagem de destaque e métricas de confiança.
 
-[✔️] Efeito de Digitação no Título: A manchete principal possui uma animação de digitação para um impacto inicial forte.
+[✔️] Animações de Entrada (AOS.js): Elementos com animações suaves na rolagem.
 
-[✔️] Efeitos Parallax: Seções com fundos de imagem fixos para criar uma sensação de profundidade e sofisticação.
+[✔️] Efeitos Visuais Avançados:
 
-[✔️] Micro-interações: Cards de serviço interativos com efeito "glow" e botões com brilho para incentivar o clique.
+[✔️] Efeito de digitação no título.
 
-[✔️] Header com Transição Inteligente: O cabeçalho se adapta durante a rolagem para melhor usabilidade.
+[✔️] Efeitos Parallax em seções-chave.
+
+[✔️] Animações de "scan" e "glow" na Hero Section.
+
+[✔️] Micro-interações em cards e botões.
+
+[✔️] Header com Transição Inteligente: Adaptação do cabeçalho durante a rolagem.
 
 Conteúdo e Estratégia:
 
-[✔️] Seção de Clientes com Logos Reais: Inclusão dos logos dos clientes para gerar prova social e credibilidade imediata.
+[✔️] Seção de Clientes com Logos Reais: Inclusão de logos para prova social.
 
-[✔️] Conteúdo Focado nos Serviços da MC6: Os textos foram refinados para refletir os serviços principais: Monitoramento, Cabeamento, Locação de Equipamentos e Microinformática.
+[✔️] Conteúdo Focado nos Serviços da MC6: Textos refinados para refletir os serviços principais.
 
-[✔️] Estrutura de Página Única (Landing Page): Todas as informações essenciais estão consolidadas em uma única página para maximizar a conversão.
+[✔️] Formulário de Contato Detalhado: Adição de campo de empresa e menu de seleção de serviços.
+
+Técnico:
+
+[✔️] Melhorias de Acessibilidade: Correção de alertas para botões e formulários, garantindo compatibilidade com leitores de tela.
 
 🚀 Fase 2: Próximos Passos (Roadmap)
 🎯 Prioridade 1: Lançamento (Essencial)
-[ ] Ativar Formulário de Contato: Conectar o formulário HTML a um serviço de recebimento (ex: Formspree, Netlify Forms) para capturar leads.
-
-[ ] Atualizar Informações de Contato: Inserir os dados de contato oficiais da MC6 (telefone, e-mail, link do WhatsApp).
+[ ] Ativar Formulário de Contato: Conectar o formulário a um serviço de recebimento (ex: Formspree, Netlify Forms) para capturar leads.
 
 [ ] Otimização de Performance:
 
@@ -42,7 +50,7 @@ Conteúdo e Estratégia:
 
 [ ] Minificar todos os assets (HTML, CSS, JS).
 
-[ ] Hospedagem e Domínio: Fazer o deploy do site em um provedor (Netlify, Vercel, etc.) e configurar o domínio oficial.
+[ ] Hospedagem e Domínio: Fazer o deploy da versão final e configurar o domínio oficial.
 
 📈 Prioridade 2: Crescimento e SEO (Estratégico)
 [ ] SEO On-Page Detalhado: Otimizar meta title e meta description com palavras-chave estratégicas para Blumenau e região.

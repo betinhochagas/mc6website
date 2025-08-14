@@ -1,7 +1,7 @@
 # Documentação Técnica - Site Corporativo MC6
 
-**Versão:** 2.0 (Dark Mode Tech)
-**Data:** 13 de Agosto de 2025
+**Versão:** 2.1 (Hero Section Rework)
+**Data:** 14 de Agosto de 2025
 
 ## 1. Visão Geral do Projeto
 
@@ -16,8 +16,8 @@ O design adota uma estética "dark mode", associada ao universo da tecnologia, c
 O site foi construído utilizando tecnologias web modernas, focadas em performance, flexibilidade e facilidade de manutenção.
 
 - **HTML5:** Estrutura semântica para máxima acessibilidade e SEO.
-- **Tailwind CSS v3:** Framework CSS utility-first para a criação rápida de um design customizado e responsivo. Todo o estilo é aplicado diretamente nas classes HTML.
-- **JavaScript (ES6+):** Utilizado para interatividade, animações e manipulação do DOM. O código está contido em uma tag `<script>` no final do `index.html`.
+- **Tailwind CSS v3:** Framework CSS utility-first para a criação rápida de um design customizado e responsivo.
+- **JavaScript (ES6+):** Utilizado para interatividade, animações e manipulação do DOM.
 - **AOS (Animate on Scroll):** Biblioteca para animações de elementos que surgem na tela durante a rolagem.
 - **Font Awesome 6:** Biblioteca de ícones para elementos visuais.
 
@@ -25,21 +25,16 @@ O site foi construído utilizando tecnologias web modernas, focadas em performan
 
 ## 3. Estrutura de Arquivos
 
-A estrutura do projeto é intencionalmente simples para facilitar a manutenção.
-
 ```
 /
 |-- index.html              # O arquivo principal que contém todo o site.
 |-- assets/
 |   |-- clients/
 |   |   |-- bk.webp
-|   |   |-- cliente-trezo.webp
 |   |   |-- ... (todos os outros logos de clientes)
-|   |-- (outros assets como imagens de cases, etc.)
+|-- DOCUMENTATION.md        # Este arquivo.
+|-- ROADMAP.md              # Arquivo com o roadmap de features.
 ```
-
-- **`index.html`**: Contém todo o código HTML, CSS customizado (dentro de `<style>`) e JavaScript (dentro de `<script>`).
-- **`assets/clients/`**: Diretório onde os logos dos clientes devem ser armazenados.
 
 ---
 
@@ -47,48 +42,43 @@ A estrutura do projeto é intencionalmente simples para facilitar a manutenção
 
 ### 4.1. Design "Dark Mode"
 
-O layout utiliza um tema escuro (`#0d1117`) para criar uma estética sofisticada e tecnológica. As cores de destaque são tons de azul (`#1f6feb`), remetendo a luzes de LED e interfaces de software.
+O layout utiliza um tema escuro (`#0d1117`) com destaques em azul (`#1f6feb`) para criar uma estética sofisticada e tecnológica.
 
-### 4.2. Efeito de Digitação (Hero Section)
+### 4.2. Hero Section Robusta
 
-O título principal é renderizado dinamicamente via JavaScript para simular um efeito de digitação, com um cursor piscando. A lógica está na função `typeWriter()` no script principal.
+- **Layout Dividido:** A seção utiliza um layout de duas colunas para melhor organização visual, com texto à esquerda e uma imagem de destaque à direita.
+- **Efeito de Digitação:** O título principal é renderizado dinamicamente via JavaScript para simular um efeito de digitação.
+- **"Trust Badges" Animados:** Cards de métricas com ícones e um efeito de "scan" (linha de luz) para reforçar a credibilidade.
+- **Imagem com Efeito "Glow":** A imagem principal possui uma animação de brilho pulsante para destacá-la.
 
-### 4.3. Animações de Rolagem (AOS.js)
+### 4.3. Animações e Efeitos Visuais
 
-Elementos como seções, cards e textos utilizam a biblioteca `AOS.js` para aparecerem na tela com animações suaves (`fade-up`, `zoom-in`, etc.), tornando a navegação mais fluida.
+- **Animações de Rolagem (AOS.js):** Elementos surgem na tela com animações suaves (`fade-up`, `zoom-in`).
+- **Efeitos Parallax:** As seções "Diferenciais" e "Cases de Sucesso" utilizam `background-attachment: fixed;` para criar um efeito de profundidade.
+- **Cards Interativos:** Cards de serviço com efeito de brilho no `hover`.
+- **Header com Transição:** O cabeçalho transita de transparente para sólido com `backdrop-blur` durante a rolagem.
 
-### 4.4. Efeitos Parallax
+### 4.4. Acessibilidade
 
-- **Seção "Diferenciais":** Utiliza a propriedade `background-attachment: fixed;` para criar um efeito de parallax, onde o conteúdo rola sobre um fundo estático.
-- **Seção "Cases de Sucesso":** Aplica o mesmo efeito com uma imagem de fundo diferente, criando profundidade e dinamismo.
-
-### 4.5. Cards de Serviço Interativos
-
-Os cards na seção de serviços possuem um efeito de brilho que os percorre no `hover` e uma borda que se ilumina, incentivando a interação do usuário.
-
-### 4.6. Header com Transição
-
-O cabeçalho começa transparente sobre a Hero Section e, com a rolagem da página, suavemente se torna sólido e com um efeito de `backdrop-blur` para manter a legibilidade.
+- Foram adicionados atributos `aria-label` em botões sem texto visível (ex: menu mobile) e tags `<label>` associadas a campos de formulário para garantir a compatibilidade com leitores de tela.
 
 ---
 
 ## 5. Como Customizar
 
-### 5.1. Textos
+### 5.1. Textos e Informações de Contato
 
-Todos os textos (títulos, parágrafos, itens de menu) podem ser editados diretamente no arquivo `index.html`.
+Todos os textos, incluindo o endereço e informações de contato, podem ser editados diretamente no arquivo `index.html`.
 
-### 5.2. Logos de Clientes
+### 5.2. Formulário de Contato
 
-Para adicionar ou alterar os logos dos clientes:
+Os campos do formulário, incluindo as opções do menu de seleção (`<select>`), podem ser modificados na seção `<section id="contato">`.
 
-1.  Adicione o novo arquivo de imagem (preferencialmente `.webp` ou `.png`) na pasta `assets/clients/`.
-2.  Na seção `<section id="clientes">`, edite ou adicione uma tag `<img>` apontando para o novo arquivo. Ex: `<img src="assets/clients/novo-cliente.webp" ...>`.
+### 5.3. Logos de Clientes
 
-### 5.3. Imagens de Fundo (Parallax)
+1.  Adicione o novo arquivo de imagem na pasta `assets/clients/`.
+2.  Na seção `<section id="clientes">`, adicione uma nova tag `<img>` apontando para o arquivo.
 
-As imagens de fundo das seções parallax são definidas no CSS, dentro da tag `<style>`. Para alterá-las, modifique as URLs nas classes `.parallax-bg` e `.parallax-bg-diferenciais`.
+### 5.4. Imagens de Fundo (Parallax)
 
-### 5.4. Informações de Contato
-
-Os dados de contato (telefone, e-mail, WhatsApp) estão na seção `<section id="contato">`. Edite o texto diretamente no HTML.
+As URLs das imagens de fundo são definidas no CSS, dentro da tag `<style>`, nas classes `.parallax-bg` e `.parallax-bg-diferenciais`.
