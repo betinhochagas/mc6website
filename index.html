@@ -41,7 +41,6 @@
             box-shadow: 0 0 25px rgba(31, 111, 235, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.3);
         }
 
-        /* Animated Hero Background with Grid */
         .hero-animated-bg {
             background-color: #0d1117;
             background-image: 
@@ -55,7 +54,6 @@
             overflow: hidden;
         }
 
-        /* Typing effect */
         .typing-cursor {
             display: inline-block;
             width: 3px;
@@ -70,7 +68,6 @@
             50% { opacity: 0; }
         }
 
-        /* Service Card with Interactive Glow */
         .service-card {
             background-color: #161b22;
             border: 1px solid #30363d;
@@ -98,7 +95,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* Parallax Background Effect */
         .parallax-bg {
             background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920&auto=format&fit=crop');
             background-attachment: fixed;
@@ -110,7 +106,6 @@
             background-color: rgba(13, 17, 23, 0.9);
         }
 
-        /* Header transition */
         #main-header {
             transition: background-color 0.4s ease-out, box-shadow 0.4s ease-out;
         }
@@ -131,6 +126,43 @@
             filter: grayscale(0%) opacity(100%);
             background-color: #21262d;
             border-color: #1f6feb;
+        }
+
+        /* --- New Tech Effects for Hero --- */
+        .trust-badge {
+            background-color: rgba(22, 27, 34, 0.5);
+            border: 1px solid #30363d;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .trust-badge:hover {
+            transform: translateY(-3px);
+            border-color: #1f6feb;
+            box-shadow: 0 0 15px rgba(31, 111, 235, 0.3);
+        }
+        .trust-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(31, 111, 235, 0.2), transparent);
+            animation: scan 5s linear infinite;
+        }
+        @keyframes scan {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        .hero-image-container {
+            position: relative;
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px -5px rgba(31, 111, 235, 0.3); }
+            50% { box-shadow: 0 0 30px 0px rgba(31, 111, 235, 0.5); }
         }
     </style>
 </head>
@@ -167,18 +199,50 @@
 
     <main>
         <!-- =========== Hero Section =========== -->
-        <section id="inicio" class="hero-animated-bg text-white pt-32 pb-20">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4" data-aos="fade-up">
-                    <span id="typing-text"></span><span class="typing-cursor"></span>
-                </h1>
-                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
-                    Especialistas em garantir a máxima performance e disponibilidade da sua infraestrutura de TI com monitoramento proativo, cabeamento estruturado e suporte dedicado.
-                </p>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <a href="#contato" class="tech-glow-button inline-block text-white font-bold py-3 px-8 rounded-lg">
-                        Fale com um Especialista
-                    </a>
+        <section id="inicio" class="hero-animated-bg text-white">
+            <div class="container mx-auto px-6 pt-32 pb-20 flex flex-col md:flex-row items-center min-h-screen">
+                <!-- Left Column: Text Content -->
+                <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                        <span id="typing-text"></span><span class="typing-cursor"></span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-400 max-w-xl mx-auto md:mx-0 mb-8">
+                        Especialistas em garantir a máxima performance e disponibilidade da sua infraestrutura de TI com monitoramento proativo, cabeamento estruturado e suporte dedicado.
+                    </p>
+                    <div class="flex justify-center md:justify-start flex-wrap gap-4 mb-12">
+                        <a href="#contato" class="tech-glow-button inline-block text-white font-bold py-3 px-8 rounded-lg">
+                            Fale com um Especialista
+                        </a>
+                    </div>
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div class="trust-badge p-3 rounded-lg">
+                            <i class="fas fa-shield-alt text-2xl text-[#1f6feb] mb-1"></i>
+                            <p class="text-xl font-bold text-white">99.9%</p>
+                            <p class="text-xs text-gray-400">SLA em Contrato</p>
+                        </div>
+                        <div class="trust-badge p-3 rounded-lg">
+                            <i class="fas fa-briefcase text-2xl text-[#1f6feb] mb-1"></i>
+                            <p class="text-xl font-bold text-white">500+</p>
+                            <p class="text-xs text-gray-400">Projetos Executados</p>
+                        </div>
+                        <div class="trust-badge p-3 rounded-lg">
+                            <i class="fas fa-headset text-2xl text-[#1f6feb] mb-1"></i>
+                            <p class="text-xl font-bold text-white">24/7</p>
+                            <p class="text-xs text-gray-400">Suporte Proativo</p>
+                        </div>
+                        <div class="trust-badge p-3 rounded-lg">
+                            <i class="fas fa-calendar-alt text-2xl text-[#1f6feb] mb-1"></i>
+                            <p class="text-xl font-bold text-white">10+</p>
+                            <p class="text-xs text-gray-400">Anos de Experiência</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Column: Image -->
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-delay="200">
+                    <div class="hero-image-container rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=800&auto=format&fit=crop" alt="Engenheiro de redes trabalhando em um data center" class="rounded-2xl shadow-2xl w-full max-w-md">
+                    </div>
                 </div>
             </div>
         </section>
