@@ -7,7 +7,7 @@ Insira aqui um screenshot ou GIF do site em funcionamento. Ferramentas como o Sc
 🚀 Demo ao Vivo
 Você pode acessar a versão de teste do site através do seguinte link:
 
-➡️ Acessar a Demo no GitHub Pages https://betinhochagas.github.io/mc6website/
+➡️ Acessar a Demo no GitHub Pages <a href="https://betinhochagas.github.io/mc6website/">Clique aqui</a>
 
 ✨ Features Implementadas
 O site conta com uma série de funcionalidades modernas para garantir uma experiência de usuário rica e profissional:
@@ -65,4 +65,4 @@ Ou, se tiver a extensão "Live Server" no VS Code, clique com o botão direito n
 📚 Documentação Completa
 Para detalhes técnicos aprofundados sobre a arquitetura, customização de cores, estrutura e componentes, consulte a documentação completa do projeto:
 
-➡️ Ler a Documentação Técnica
+➡️ <a href="https://github.com/betinhochagas/mc6website/blob/main/DOCUMENTATION.md" style="color: var(--accent-primary); text-decoration: none;">Ler a Documentação Técnica</a>
