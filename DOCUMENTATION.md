@@ -1,80 +1,68 @@
-Documentação Técnica - Site Corporativo MC6
-Versão: 3.0 (Implementação de Tema Claro/Escuro)
-Data: 14 de Agosto de 2025
+Site Institucional - MC6 Tecnologia e Eventos
+Este repositório contém o código-fonte do site institucional da MC6 Corp, uma empresa especializada em engenharia, monitoramento de redes e soluções de TI. O projeto foi desenvolvido para ser uma presença digital moderna, responsiva e tecnologicamente avançada, refletindo a expertise da empresa.
 
-1. Visão Geral do Projeto
-Este documento detalha a estrutura técnica e os componentes do site institucional da MC6 Corp. O projeto foi desenvolvido com o objetivo de criar uma presença digital moderna, tecnologicamente avançada e otimizada para a conversão de clientes B2B.
+🖼️ Visualização
+Insira aqui um screenshot ou GIF do site em funcionamento. Ferramentas como o ScreenToGif podem ajudar a criar uma demonstração rápida.
 
-O design adota uma estética "dark mode" como padrão, mas agora inclui um sistema de tema claro/escuro completo, permitindo que o usuário escolha sua preferência. Ambos os temas mantêm as animações e efeitos interativos que criam uma experiência de usuário imersiva e profissional.
+🚀 Demo ao Vivo
+Você pode acessar a versão de teste do site através do seguinte link:
 
-2. Stack de Tecnologias (Frontend)
-HTML5: Estrutura semântica para máxima acessibilidade e SEO.
+➡️ Acessar a Demo no GitHub Pages <a href="https://betinhochagas.github.io/mc6website/">Clique aqui</a>
 
-CSS3 (com Variáveis/Custom Properties): A arquitetura de temas é construída sobre variáveis CSS, permitindo uma troca de paleta de cores eficiente e de fácil manutenção.
+✨ Features Implementadas
+O site conta com uma série de funcionalidades modernas para garantir uma experiência de usuário rica e profissional:
 
-Tailwind CSS v3: Framework CSS utility-first para a criação rápida de um design customizado e responsivo.
+Sistema de Tema: Alternância entre tema Claro (Light) e Escuro (Dark), com salvamento da preferência do usuário.
 
-JavaScript (ES6+): Utilizado para interatividade, animações, manipulação do DOM e gerenciamento do estado do tema.
+Design Totalmente Responsivo: Adaptação perfeita para desktops, tablets e smartphones.
 
-AOS (Animate on Scroll): Biblioteca para animações de elementos que surgem na tela durante a rolagem.
+Efeitos Visuais Avançados:
 
-Font Awesome 6: Biblioteca de ícones para elementos visuais.
+Animações de entrada suave em elementos (Animate on Scroll).
 
-3. Estrutura de Arquivos
-/
-|-- index.html              # O arquivo principal que contém todo o site.
-|-- assets/
-|   |-- clients/
-|   |   |-- ... (logos de clientes em formato .webp)
-|-- DOCUMENTATION.md        # Este arquivo.
-|-- ROADMAP.md              # Arquivo com o roadmap de features.
+Efeito de digitação no título principal da Hero Section.
 
-4. Features e Efeitos Implementados
-4.1. Sistema de Tema (Claro/Escuro)
-Implementação com Variáveis CSS: O núcleo do sistema de temas reside na definição de variáveis CSS (--bg-primary, --text-primary, etc.) no seletor :root (para o tema escuro padrão) e sua redefinição na classe .theme-light.
+Efeito Parallax na seção de diferenciais (otimizado para mobile).
 
-Controle via JavaScript: Um script gerencia a adição/remoção da classe .theme-light na tag <body>, controla o ícone do botão de alternância e salva a preferência do usuário no localStorage.
+Micro-interações em botões e cards, com efeitos de brilho (glow) e sombra.
 
-Preferência do Sistema: Na primeira visita, o site detecta e aplica o tema preferido do sistema operacional do usuário (claro ou escuro).
+Header Inteligente: O cabeçalho possui um efeito de transição e backdrop-blur que é ativado com a rolagem da página.
 
-4.2. Hero Section Robusta
-Layout Dividido: Layout de duas colunas com texto à esquerda e imagem à direita.
+Acessibilidade: Uso de atributos aria-label para garantir a compatibilidade com leitores de tela.
 
-Efeito de Digitação: O título principal é renderizado dinamicamente via JavaScript.
+🛠️ Tecnologias Utilizadas
+Este projeto foi construído utilizando tecnologias web modernas, focadas em performance e manutenibilidade:
 
-"Trust Badges" Animados: Cards de métricas com ícones e um efeito de "scan".
+HTML5
 
-Imagem com Efeito "Glow": A imagem principal possui uma animação de brilho pulsante que se adapta ao tema.
+CSS3 (com Variáveis/Custom Properties para o sistema de temas)
 
-4.3. Animações e Efeitos Visuais
-Animações de Rolagem (AOS.js): Elementos surgem na tela com animações suaves.
+Tailwind CSS v3
 
-Efeito Parallax Responsivo: A seção "Diferenciais" utiliza background-attachment: fixed; em desktops. Uma media query desativa este efeito em telas com menos de 768px de largura, trocando para background-attachment: scroll; para garantir a correta visualização e performance em dispositivos móveis.
+JavaScript (ES6+)
 
-Cards Interativos: Cards de serviço com efeito de brilho e sombra no hover.
+AOS (Animate on Scroll)
 
-Header com Transição: O cabeçalho transita de transparente para sólido com backdrop-blur durante a rolagem.
+Font Awesome 6
 
-4.4. Acessibilidade
-Atributos aria-label em botões sem texto visível.
+⚙️ Como Rodar o Projeto Localmente
+Como este é um projeto front-end puro (HTML, CSS, JS), não há necessidade de um processo de build complexo para visualização.
 
-Estrutura de formulário com tags <label> associadas (mesmo que sr-only).
+Clone o repositório:
 
-5. Como Customizar
-5.1. Cores dos Temas
-Para alterar as cores, edite as variáveis CSS no topo da tag <style> no index.html:
+git clone https://github.com/betinhochagas/mc6website.git
 
-Tema Escuro: Modifique as variáveis dentro do seletor :root { ... }.
+Navegue até a pasta do projeto:
 
-Tema Claro: Modifique as variáveis dentro do seletor .theme-light { ... }.
+cd mc6website
 
-5.2. Textos e Informações de Contato
-Todos os textos podem ser editados diretamente no index.html.
+Abra o arquivo index.html:
 
-5.3. Logos de Clientes
-Adicione o novo arquivo de imagem (preferencialmente .webp) na pasta assets/clients/.
+Você pode simplesmente arrastar o arquivo index.html para o seu navegador de preferência.
 
-Na seção <section id="clientes">, duplique um dos <div> com a classe client-logo-bg e atualize o src da imagem.
+Ou, se tiver a extensão "Live Server" no VS Code, clique com o botão direito no arquivo e selecione Open with Live Server.
 
-5.4. Imagens de Fundo (Parallax)
-A URL da imagem de fundo é definida no CSS, na classe .parallax-bg.
+📚 Documentação Completa
+Para detalhes técnicos aprofundados sobre a arquitetura, customização de cores, estrutura e componentes, consulte a documentação completa do projeto:
+
+➡️ <a href="https://github.com/betinhochagas/mc6website/blob/main/DOCUMENTATION.md" style="color: var(--accent-primary);">Ler a Documentação Técnica</a>
