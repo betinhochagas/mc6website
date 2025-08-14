@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC6 Corporate Professional - Soluções em Redes e Wi-Fi</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark background */
+            color: #c9d1d9; /* Light gray text */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* --- Dark Theme & Tech Effects --- */
+
+        .tech-glow-button {
+            background: #1f6feb;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(31, 111, 235, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+        .tech-glow-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(31, 111, 235, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Animated Hero Background with Grid */
+        .hero-animated-bg {
+            background-color: #0d1117;
+            background-image: 
+                linear-gradient(rgba(13, 17, 23, 0.95), rgba(13, 17, 23, 0.95)),
+                radial-gradient(ellipse at top, transparent 20%, #0d1117),
+                linear-gradient(to top, transparent, #0164f922),
+                url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Typing effect */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: #2590f1;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Service Card with Interactive Glow */
+        .service-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100%;
+            background-image: linear-gradient(120deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.08), rgba(255,255,255,0) 70%);
+            top: 0;
+            left: -100px;
+            transform: skewX(-20deg);
+            transition: 0.4s;
+        }
+        .service-card:hover:before {
+            left: calc(100% + 100px);
+        }
+        .service-card:hover {
+            border-color: #1f6feb;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Parallax Background Effect */
+        .parallax-bg {
+            background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .parallax-overlay {
+            background-color: rgba(13, 17, 23, 0.9);
+        }
+
+        /* Header transition */
+        #main-header {
+            transition: background-color 0.4s ease-out, box-shadow 0.4s ease-out;
+        }
+        
+        .client-logo-bg {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            filter: grayscale(100%) opacity(60%);
+            transition: all 0.3s ease;
+        }
+        .client-logo-bg:hover {
+            filter: grayscale(0%) opacity(100%);
+            background-color: #21262d;
+            border-color: #1f6feb;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- =========== Header =========== -->
+    <header id="main-header" class="bg-transparent fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-white" id="logo">
+                <i class="fas fa-satellite-dish mr-2"></i>MC6 Corp
+            </a>
+            <div class="hidden md:flex items-center space-x-8 font-semibold" id="desktop-menu">
+                <a href="#servicos" class="text-gray-300 hover:text-white transition-colors">Serviços</a>
+                <a href="#diferenciais" class="text-gray-300 hover:text-white transition-colors">Diferenciais</a>
+                <a href="#cases" class="text-gray-300 hover:text-white transition-colors">Cases</a>
+                <a href="#contato" class="tech-glow-button text-white px-5 py-2 rounded-lg font-bold">
+                    Solicitar Orçamento
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#161b22] border-t border-[#30363d]">
+            <a href="#servicos" class="block py-3 px-6 text-gray-300 hover:bg-[#21262d]">Serviços</a>
+            <a href="#diferenciais" class="block py-3 px-6 text-gray-300 hover:bg-[#21262d]">Diferenciais</a>
+            <a href="#cases" class="block py-3 px-6 text-gray-300 hover:bg-[#21262d]">Cases</a>
+            <a href="#contato" class="block py-3 px-6 text-gray-300 hover:bg-[#21262d]">Contato</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========== Hero Section =========== -->
+        <section id="inicio" class="hero-animated-bg text-white pt-32 pb-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4" data-aos="fade-up">
+                    <span id="typing-text"></span><span class="typing-cursor"></span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
+                    Especialistas em garantir a máxima performance e disponibilidade da sua infraestrutura de TI com monitoramento proativo, cabeamento estruturado e suporte dedicado.
+                </p>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <a href="#contato" class="tech-glow-button inline-block text-white font-bold py-3 px-8 rounded-lg">
+                        Fale com um Especialista
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Services Section =========== -->
+        <section id="servicos" class="py-24 bg-[#0d1117]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Nossos Serviços Especializados</h2>
+                    <p class="text-lg text-gray-400 mt-3 max-w-2xl mx-auto">Soluções de ponta a ponta para a infraestrutura de TI da sua empresa.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="service-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-chart-line text-5xl text-[#1f6feb] mb-5"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Monitoramento de Rede</h3>
+                        <p class="text-gray-400">Gestão e monitoramento proativo 24/7 de redes cabeadas e Wi-Fi. Identificamos e resolvemos problemas antes que afetem sua operação.</p>
+                    </div>
+                    <div class="service-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-sitemap text-5xl text-[#1f6feb] mb-5"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Cabeamento e Montagem</h3>
+                        <p class="text-gray-400">Projetos de cabeamento estruturado, montagem e organização de racks e patch panels, com certificação Fluke para garantir a máxima performance.</p>
+                    </div>
+                    <div class="service-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-wifi text-5xl text-[#1f6feb] mb-5"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Locação de Equipamentos</h3>
+                        <p class="text-gray-400">Aluguel de equipamentos de rede de alta performance da linha Ubiquiti Unifi, ideais para eventos ou necessidades temporárias de alta demanda.</p>
+                    </div>
+                    <div class="service-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-desktop text-5xl text-[#1f6feb] mb-5"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Suporte em Microinformática</h3>
+                        <p class="text-gray-400">Manutenção e suporte técnico para estações de trabalho, garantindo que sua equipe tenha as ferramentas certas e sempre funcionando.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- =========== Diferenciais Section (with Parallax) =========== -->
+        <section id="diferenciais" class="parallax-bg">
+            <div class="parallax-overlay py-24">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16" data-aos="fade-up">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Nossa Vantagem Competitiva</h2>
+                        <p class="text-lg text-gray-400 mt-3 max-w-2xl mx-auto">Execução precisa, do planejamento à entrega final.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        <div class="bg-[#161b22]/80 backdrop-blur-sm p-8 rounded-lg border border-[#30363d]" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-cogs text-4xl text-[#1f6feb] mb-4"></i>
+                            <h3 class="text-xl font-bold text-white mb-2">Especialização Técnica</h3>
+                            <p class="text-gray-400">Time com certificações dos principais fabricantes e mais de uma década de experiência focada em redes corporativas.</p>
+                        </div>
+                        <div class="bg-[#161b22]/80 backdrop-blur-sm p-8 rounded-lg border border-[#30363d]" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-robot text-4xl text-[#1f6feb] mb-4"></i>
+                            <h3 class="text-xl font-bold text-white mb-2">Monitoramento Proativo 24/7</h3>
+                             <p class="text-gray-400">Nosso NOC em Gaspar utiliza IA para prever e neutralizar falhas antes que elas impactem sua operação.</p>
+                        </div>
+                        <div class="bg-[#161b22]/80 backdrop-blur-sm p-8 rounded-lg border border-[#30363d]" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-file-alt text-4xl text-[#1f6feb] mb-4"></i>
+                            <h3 class="text-xl font-bold text-white mb-2">Documentação e Treinamento</h3>
+                            <p class="text-gray-400">Entregamos documentação as-built completa e realizamos o handover para sua equipe de TI com treinamento prático.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Client Logos Section =========== -->
+        <section id="clientes" class="py-20 bg-[#0d1117]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-white">Empresas que confiam na MC6</h2>
+                    <p class="text-gray-400 mt-2">Junte-se a líderes de mercado que escolheram nossa expertise para suas redes.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center">
+                    <div class="client-logo-bg" data-aos="zoom-in"><img src="assets/clients/bk.webp" alt="Logo Burger King" class="max-h-12 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="50"><img src="assets/clients/cliente-trezo.webp" alt="Logo Trezo" class="max-h-12 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="100"><img src="assets/clients/cliente-donpeppone.webp" alt="Logo Don Peppone" class="max-h-14 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="150"><img src="assets/clients/aikau_poke.webp" alt="Logo Aikau Poke" class="max-h-14 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="200"><img src="assets/clients/cliente-dona-augusta.webp" alt="Logo Dona Augusta" class="max-h-12 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="250"><img src="assets/clients/cliente-blumenau-vistoria.webp" alt="Logo Blumenau Vistoria" class="max-h-12 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="300"><img src="assets/clients/cliente-seu-gin.webp" alt="Logo Seu Gin" class="max-h-14 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="350"><img src="assets/clients/cliente-restaurante-chines.webp" alt="Logo Restaurante Chinês" class="max-h-14 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="400"><img src="assets/clients/cliente-nono-nico.webp" alt="Logo Nonno Nico" class="max-h-12 object-contain"></div>
+                    <div class="client-logo-bg" data-aos="zoom-in" data-aos-delay="450"><img src="assets/clients/biblio_clube.webp" alt="Logo Biblio Clube" class="max-h-14 object-contain"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Contact Section =========== -->
+        <section id="contato" class="py-24 bg-[#161b22]">
+            <div class="container mx-auto px-6" data-aos="fade-up">
+                <div class="bg-[#0d1117] border border-[#30363d] rounded-2xl p-8 md:p-16 grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Vamos Projetar a Rede Ideal para sua Empresa?</h2>
+                        <p class="text-lg text-gray-400 mb-6">Preencha o formulário e um de nossos engenheiros de rede entrará em contato para uma análise inicial do seu projeto, sem compromisso.</p>
+                        <ul class="space-y-3 text-gray-300 mt-6">
+                            <li class="flex items-center"><i class="fas fa-phone mr-3 text-[#1f6feb]"></i> (47) 9XXXX-XXXX</li>
+                            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-[#1f6feb]"></i> contato@mc6corp.com.br</li>
+                             <li class="flex items-center"><i class="fab fa-whatsapp mr-3 text-[#1f6feb]"></i> Fale conosco pelo WhatsApp</li>
+                        </ul>
+                    </div>
+                    <div class="bg-[#21262d] p-8 rounded-xl">
+                        <form action="#" method="POST">
+                            <h3 class="text-xl font-bold mb-5 text-white">Solicite um orçamento:</h3>
+                            <div class="space-y-4">
+                                <input type="text" placeholder="Nome Completo" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]">
+                                <input type="email" placeholder="E-mail Corporativo" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]">
+                                <textarea placeholder="Descreva sua necessidade" rows="4" class="w-full p-3 bg-[#0d1117] border border-[#30363d] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#1f6feb]"></textarea>
+                                <button type="submit" class="w-full tech-glow-button text-white font-bold py-3 px-8 rounded-lg">Enviar para Análise</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========== Footer =========== -->
+    <footer class="bg-[#0d1117] border-t border-[#30363d]">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2024 MC6 Corp. Todos os direitos reservados. | Blumenau, SC</p>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+            });
+
+            // Get elements once for better performance
+            const header = document.getElementById('main-header');
+            const logo = document.getElementById('logo');
+            const desktopMenu = document.getElementById('desktop-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Header transition on scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.remove('bg-transparent');
+                    header.classList.add('bg-[#161b22]/80', 'backdrop-blur-lg', 'shadow-lg', 'shadow-black/20');
+                } else {
+                    header.classList.add('bg-transparent');
+                    header.classList.remove('bg-[#161b22]/80', 'backdrop-blur-lg', 'shadow-lg', 'shadow-black/20');
+                }
+            });
+
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Typing effect
+            const typingTextElement = document.getElementById('typing-text');
+            const textToType = "Monitoramento e Engenharia de Redes Corporativas";
+            let i = 0;
+            function typeWriter() {
+                if (i < textToType.length) {
+                    typingTextElement.innerHTML += textToType.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50); // Adjust typing speed here
+                }
+            }
+            typeWriter();
+        });
+    </script>
+</body>
+</html>
