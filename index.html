@@ -30,6 +30,7 @@
             --text-secondary: #8b949e;
             --accent-primary: #1f6feb;
             --accent-secondary: #2590f1;
+            --accent-primary-rgb: 31, 111, 235;
             --header-bg: rgba(13, 17, 23, 0.8);
             --shadow-color: rgba(0, 0, 0, 0.3);
             --glow-color: rgba(31, 111, 235, 0.5);
@@ -47,6 +48,7 @@
             --text-secondary: #6c757d;
             --accent-primary: #0d6efd;
             --accent-secondary: #0a58ca;
+            --accent-primary-rgb: 13, 110, 253;
             --header-bg: rgba(255, 255, 255, 0.8);
             --shadow-color: rgba(0, 0, 0, 0.1);
             --glow-color: rgba(13, 110, 253, 0.4);
@@ -66,7 +68,6 @@
         }
         
         /* --- Efeitos Visuais (Preservados e Adaptados) --- */
-
         .tech-glow-button {
             background: var(--accent-primary);
             color: white;
@@ -77,7 +78,7 @@
              box-shadow: 0 0 15px var(--glow-color), inset 0 0 5px rgba(255, 255, 255, 0.2);
         }
         .tech-glow-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 0 25px var(--glow-hover-color);
         }
         .theme-dark .tech-glow-button:hover {
@@ -148,18 +149,6 @@
             transition: background-color 0.4s ease-out, box-shadow 0.4s ease-out;
         }
         
-        .client-logo-bg {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            filter: grayscale(100%) opacity(60%);
-            transition: all 0.3s ease;
-        }
-        .client-logo-bg:hover {
-            filter: grayscale(0%) opacity(100%);
-            background-color: var(--bg-tertiary);
-            border-color: var(--accent-primary);
-        }
-
         .trust-badge {
             background-color: rgba(22, 27, 34, 0.5); /* Mantido do original para o efeito dark */
             border: 1px solid var(--border-color);
@@ -190,6 +179,10 @@
             50%, 100% { left: 100%; }
         }
 
+        .hero-image-container, #hero-description {
+            transition: opacity 0.5s ease-in-out;
+        }
+
         .hero-image-container {
             position: relative;
             animation: pulse-glow 4s ease-in-out infinite;
@@ -199,10 +192,70 @@
             50% { box-shadow: 0 0 30px 0px var(--glow-color); }
         }
 
+        /* --- Estilos do Menu Mobile Drawer --- */
+        body.menu-open {
+            overflow: hidden;
+        }
+        #mobile-menu-panel {
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        body.menu-open #mobile-menu-panel {
+            transform: translateX(0);
+        }
+        .mobile-menu-link {
+            transform: translateX(-30px);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+        }
+        .mobile-menu-link:hover {
+            color: var(--accent-primary);
+        }
+        body.menu-open .mobile-menu-link {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* --- Estilos da Nova Seção de Clientes --- */
+        .logo-card-container {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease-in-out;
+        }
+        .logo-card-container .logo-card {
+            filter: grayscale(100%);
+            transition: all 0.3s ease-in-out;
+        }
+        .logo-card-container:hover .logo-card {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        .logo-card-container:hover {
+            background-color: var(--bg-tertiary);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 30px var(--glow-color);
+        }
+        
+        .scroller-content {
+            animation: scroll 80s linear infinite;
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .scroller-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .scroller-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
         /* --- Ajustes para Mobile --- */
         @media (max-width: 768px) {
             .parallax-bg {
-                /* Desativa o efeito parallax em dispositivos móveis para melhor performance e visualização */
                 background-attachment: scroll;
             }
         }
@@ -213,13 +266,19 @@
     <!-- =========== Header =========== -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-extrabold text-[var(--text-primary)]">
-                <i class="fas fa-satellite-dish mr-2 text-[var(--accent-primary)]"></i>MC6
+            <a href="#" class="flex items-center group" aria-label="Página inicial da MC6">
+                <svg class="h-8 w-8 text-[var(--accent-primary)] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="20" r="1.5" fill="currentColor"/>
+                </svg>
+                <span class="ml-3 text-2xl font-extrabold text-[var(--text-primary)]">MC6</span>
             </a>
             <div class="hidden md:flex items-center space-x-6 font-semibold">
                 <a href="#servicos" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Serviços</a>
                 <a href="#diferenciais" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Diferenciais</a>
-                <a href="#cases" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Cases</a>
+                <a href="#clientes" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Clientes</a>
                 <button id="theme-toggle" class="text-[var(--text-primary)] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[var(--bg-tertiary)] transition-colors" aria-label="Alternar tema">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -231,62 +290,63 @@
                  <button id="theme-toggle-mobile" class="text-[var(--text-primary)] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[var(--bg-tertiary)] transition-colors" aria-label="Alternar tema">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button id="mobile-menu-button" class="text-[var(--text-primary)] focus:outline-none" aria-label="Abrir menu">
+                <button id="mobile-menu-button" class="text-[var(--text-primary)] focus:outline-none z-[60] relative" aria-label="Abrir menu">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
         </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[var(--bg-secondary)] border-t border-[var(--border-color)]">
-            <a href="#servicos" class="block py-3 px-6 text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]">Serviços</a>
-            <a href="#diferenciais" class="block py-3 px-6 text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]">Diferenciais</a>
-            <a href="#cases" class="block py-3 px-6 text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]">Cases</a>
-            <a href="#contato" class="block py-3 px-6 text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]">Contato</a>
-        </div>
     </header>
 
     <main>
         <!-- =========== Hero Section =========== -->
         <section id="inicio" class="hero-animated-bg text-[var(--text-primary)]">
             <div class="container mx-auto px-6 pt-32 pb-20 flex flex-col md:flex-row items-center min-h-screen">
-                <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0" data-aos="fade-right">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                <div class="w-full md:w-1/2 text-center md:text-left mb-12 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 min-h-[100px] md:min-h-[140px]">
                         <span id="typing-text"></span><span class="typing-cursor inline-block w-[3px] h-[1em] ml-1.5 align-middle"></span>
                     </h1>
-                    <p class="text-lg md:text-xl text-[var(--text-secondary)] max-w-xl mx-auto md:mx-0 mb-8">
-                        Especialistas em garantir a máxima performance e disponibilidade da sua infraestrutura de TI com monitoramento proativo, cabeamento estruturado e suporte dedicado.
+                    <p id="hero-description" class="text-lg md:text-xl text-[var(--text-secondary)] max-w-xl mx-auto md:mx-0 mb-8 min-h-[120px]">
+                        <!-- O conteúdo aqui será inserido via JavaScript -->
                     </p>
                     <div class="flex justify-center md:justify-start flex-wrap gap-4 mb-12">
                         <a href="#contato" class="tech-glow-button inline-block font-bold py-3 px-8 rounded-lg">
                             Fale com um Especialista
                         </a>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <div class="trust-badge p-3 rounded-lg">
-                            <i class="fas fa-shield-alt text-2xl text-[var(--accent-primary)] mb-1"></i>
-                            <p class="text-xl font-bold text-[var(--text-primary)]">99.9%</p>
-                            <p class="text-xs text-[var(--text-secondary)]">SLA em Contrato</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="trust-badge p-3 rounded-lg flex items-center text-left md:block md:text-center">
+                            <i class="fas fa-shield-alt text-2xl text-[var(--accent-primary)] md:mb-1"></i>
+                            <div class="ml-3 md:ml-0">
+                                <p class="text-lg md:text-xl font-bold text-[var(--text-primary)]">99.9%</p>
+                                <p class="text-xs text-[var(--text-secondary)]">SLA em Contrato</p>
+                            </div>
                         </div>
-                        <div class="trust-badge p-3 rounded-lg">
-                            <i class="fas fa-briefcase text-2xl text-[var(--accent-primary)] mb-1"></i>
-                            <p class="text-xl font-bold text-[var(--text-primary)]">500+</p>
-                            <p class="text-xs text-[var(--text-secondary)]">Projetos Executados</p>
+                        <div class="trust-badge p-3 rounded-lg flex items-center text-left md:block md:text-center">
+                            <i class="fas fa-briefcase text-2xl text-[var(--accent-primary)] md:mb-1"></i>
+                            <div class="ml-3 md:ml-0">
+                                <p class="text-lg md:text-xl font-bold text-[var(--text-primary)]">500+</p>
+                                <p class="text-xs text-[var(--text-secondary)]">Projetos Executados</p>
+                            </div>
                         </div>
-                        <div class="trust-badge p-3 rounded-lg">
-                            <i class="fas fa-headset text-2xl text-[var(--accent-primary)] mb-1"></i>
-                            <p class="text-xl font-bold text-[var(--text-primary)]">24/7</p>
-                            <p class="text-xs text-[var(--text-secondary)]">Suporte Proativo</p>
+                        <div class="trust-badge p-3 rounded-lg flex items-center text-left md:block md:text-center">
+                            <i class="fas fa-headset text-2xl text-[var(--accent-primary)] md:mb-1"></i>
+                            <div class="ml-3 md:ml-0">
+                                <p class="text-lg md:text-xl font-bold text-[var(--text-primary)]">24/7</p>
+                                <p class="text-xs text-[var(--text-secondary)]">Suporte Proativo</p>
+                            </div>
                         </div>
-                        <div class="trust-badge p-3 rounded-lg">
-                            <i class="fas fa-calendar-alt text-2xl text-[var(--accent-primary)] mb-1"></i>
-                            <p class="text-xl font-bold text-[var(--text-primary)]">10+</p>
-                            <p class="text-xs text-[var(--text-secondary)]">Anos de Experiência</p>
+                        <div class="trust-badge p-3 rounded-lg flex items-center text-left md:block md:text-center">
+                            <i class="fas fa-calendar-alt text-2xl text-[var(--accent-primary)] md:mb-1"></i>
+                            <div class="ml-3 md:ml-0">
+                                <p class="text-lg md:text-xl font-bold text-[var(--text-primary)]">10+</p>
+                                <p class="text-xs text-[var(--text-secondary)]">Anos de Experiência</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-delay="200">
+                <div class="hidden md:flex md:w-1/2 justify-center" data-aos="fade-left" data-aos-delay="200">
                     <div class="hero-image-container rounded-2xl">
-                        <img src="https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=800&auto=format&fit=crop" alt="Engenheiro de redes trabalhando em um data center" class="rounded-2xl shadow-2xl w-full max-w-md">
+                        <img id="hero-image" src="https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=800&auto=format&fit=crop" alt="Engenheiro de redes trabalhando em um data center" class="rounded-2xl shadow-2xl w-full max-w-md h-80 md:h-96 object-cover">
                     </div>
                 </div>
             </div>
@@ -353,19 +413,75 @@
             </div>
         </section>
 
-        <!-- =========== Client Logos Section =========== -->
-        <section id="clientes" class="py-20">
+        <!-- =========== NOVA Seção de Clientes =========== -->
+        <section id="clientes" class="py-24 bg-[var(--bg-primary)]">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-2xl font-bold text-[var(--text-primary)]">Empresas que confiam na MC6</h2>
-                    <p class="text-[var(--text-secondary)] mt-2">Junte-se a líderes de mercado que escolheram nossa expertise.</p>
+                <!-- Título Principal -->
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-[var(--text-primary)]">Construindo o Futuro com Parceiros Incríveis</h2>
+                    <p class="mt-4 text-lg leading-8 text-[var(--text-secondary)]">Tecnologia e confiança que impulsionam os líderes de mercado.</p>
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center">
-                    <div class="client-logo-bg flex items-center justify-center h-20 p-2 rounded-lg" data-aos="zoom-in"><img src="assets/clients/cliente-wunderwald.webp" alt="Logo Wunderwald" class="max-h-12 object-contain"></div>
-                    <div class="client-logo-bg flex items-center justify-center h-20 p-2 rounded-lg" data-aos="zoom-in" data-aos-delay="50"><img src="assets/clients/cliente-trezo.webp" alt="Logo Trezo" class="max-h-12 object-contain"></div>
-                    <div class="client-logo-bg flex items-center justify-center h-20 p-2 rounded-lg" data-aos="zoom-in" data-aos-delay="100"><img src="assets/clients/cliente-donpeppone.webp" alt="Logo Don Peppone" class="max-h-14 object-contain"></div>
-                    <div class="client-logo-bg flex items-center justify-center h-20 p-2 rounded-lg" data-aos="zoom-in" data-aos-delay="150"><img src="assets/clients/aikau_poke.webp" alt="Logo Aikau Poke" class="max-h-14 object-contain"></div>
-                    <div class="client-logo-bg flex items-center justify-center h-20 p-2 rounded-lg" data-aos="zoom-in" data-aos-delay="200"><img src="assets/clients/cliente-dona-augusta.webp" alt="Logo Dona Augusta" class="max-h-12 object-contain"></div>
+                
+                <!-- Grade de Clientes em Destaque -->
+                <div class="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <div class="logo-card-container flex items-center justify-center h-32 sm:h-36 rounded-xl" data-aos="zoom-in" data-aos-delay="100">
+                        <img class="logo-card max-h-16" src="assets/clients/cliente-wunderwald.webp" alt="Logo Wunderwald">
+                    </div>
+                    <div class="logo-card-container flex items-center justify-center h-32 sm:h-36 rounded-xl" data-aos="zoom-in" data-aos-delay="150">
+                        <img class="logo-card max-h-16" src="assets/clients/cliente-trezo.webp" alt="Logo Trezo">
+                    </div>
+                    <div class="logo-card-container flex items-center justify-center h-32 sm:h-36 rounded-xl" data-aos="zoom-in" data-aos-delay="200">
+                        <img class="logo-card max-h-16" src="assets/clients/cliente-donpeppone.webp" alt="Logo Don Peppone">
+                    </div>
+                    <div class="logo-card-container flex items-center justify-center h-32 sm:h-36 rounded-xl" data-aos="zoom-in" data-aos-delay="250">
+                        <img class="logo-card max-h-16" src="assets/clients/aikau_poke.webp" alt="Logo Aikau Poke">
+                    </div>
+                    <div class="logo-card-container flex items-center justify-center h-32 sm:h-36 rounded-xl" data-aos="zoom-in" data-aos-delay="300">
+                        <img class="logo-card max-h-16" src="assets/clients/cliente-dona-augusta.webp" alt="Logo Dona Augusta">
+                    </div>
+                    <div class="logo-card-container flex items-center justify-center h-32 sm:h-36 rounded-xl" data-aos="zoom-in" data-aos-delay="350">
+                        <img class="logo-card max-h-16" src="https://placehold.co/158x48/ffffff/1e293b?text=Quantum" alt="Logo Quantum">
+                    </div>
+                    <div class="logo-card-container flex items-center justify-center h-32 sm:h-36 rounded-xl" data-aos="zoom-in" data-aos-delay="400">
+                        <img class="logo-card max-h-16" src="https://placehold.co/158x48/ffffff/1e293b?text=CyberCo" alt="Logo CyberCo">
+                    </div>
+                    <div class="logo-card-container flex items-center justify-center h-32 sm:h-36 rounded-xl" data-aos="zoom-in" data-aos-delay="450">
+                        <img class="logo-card max-h-16" src="https://placehold.co/158x48/ffffff/1e293b?text=NEXUS" alt="Logo Nexus">
+                    </div>
+                </div>
+
+                <!-- Divisor e Título para o Carrossel -->
+                <div class="mt-20 text-center" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold tracking-tight text-[var(--text-primary)]">E muitos outros parceiros</h3>
+                </div>
+
+                <!-- Carrossel Infinito -->
+                <div class="mt-12 w-full flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-128px),transparent_100%)]">
+                    <ul class="scroller-content flex items-center justify-start flex-shrink-0 [&_li]:mx-12">
+                        <!-- Lista de logos para o carrossel (repetida para efeito contínuo) -->
+                        <li><img src="assets/clients/cliente-restaurante-chines.webp" alt="Restaurante Chinês" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Innovate" alt="Innovate" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Synergy" alt="Synergy" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Momentum" alt="Momentum" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Pinnacle" alt="Pinnacle" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Horizon" alt="Horizon" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Fusion" alt="Fusion" class="scroller-logo max-h-16"></li>
+                        <!-- Repetição para o efeito de loop -->
+                        <li><img src="assets/clients/cliente-restaurante-chines.webp" alt="Restaurante Chinês" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Innovate" alt="Innovate" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Synergy" alt="Synergy" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Momentum" alt="Momentum" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Pinnacle" alt="Pinnacle" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Horizon" alt="Horizon" class="scroller-logo max-h-16"></li>
+                        <li><img src="https://placehold.co/158x48/ffffff/1e293b?text=Fusion" alt="Fusion" class="scroller-logo max-h-16"></li>
+                    </ul>
+                </div>
+                
+                <!-- Botão de Ação (CTA) Final -->
+                <div class="mt-20 text-center" data-aos="fade-up">
+                    <a href="#contato" class="tech-glow-button inline-block font-bold text-lg py-3 px-8 rounded-lg">
+                        Seja Nosso Parceiro
+                    </a>
                 </div>
             </div>
         </section>
@@ -380,7 +496,7 @@
                         <ul class="space-y-3 text-[var(--text-secondary)] mt-6">
                             <li class="flex items-start"><i class="fas fa-map-marker-alt mr-3 mt-1 text-[var(--accent-primary)]"></i> <span>Rua Frei Estanislau Schaette, 111, Blumenau - SC</span></li>
                             <li class="flex items-center"><i class="fas fa-phone mr-3 text-[var(--accent-primary)]"></i> (47) 3288-3002</li>
-                            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-[var(--accent-primary)]"></i> contato@mc6.com.br</li>
+                            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-[var(--accent-primary)]"></i> suporte@mc6.com.br</li>
                              <li class="flex items-center"><i class="fab fa-whatsapp mr-3 text-[var(--accent-primary)]"></i> Fale conosco pelo WhatsApp</li>
                         </ul>
                     </div>
@@ -393,6 +509,10 @@
                                 <input type="email" placeholder="E-mail Corporativo" class="w-full p-3 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]" required>
                                 <select id="service-type" class="w-full p-3 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]" required>
                                     <option value="">Selecione o tipo de serviço</option>
+                                    <option value="monitoramento">Monitoramento de Rede</option>
+                                    <option value="instalacao">Instalação de Rede</option>
+                                    <option value="manutencao">Manutenção de Rede</option>
+                                    <option value="consultoria">Consultoria em Redes</option>
                                     <option value="eventos">Wi-Fi para Eventos</option>
                                 </select>
                                 <textarea placeholder="Descreva sua necessidade" rows="4" class="w-full p-3 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]"></textarea>
@@ -412,6 +532,18 @@
         </div>
     </footer>
 
+    <!-- =========== Mobile Menu Overlay =========== -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ease-in-out opacity-0 hidden pointer-events-none">
+        <div id="mobile-menu-panel" class="fixed top-0 left-0 h-full w-4/5 max-w-sm bg-[var(--bg-secondary)] shadow-2xl p-8 flex flex-col">
+            <nav class="flex flex-col space-y-6 mt-16">
+                <a href="#servicos" class="mobile-menu-link text-2xl font-bold text-[var(--text-primary)]">Serviços</a>
+                <a href="#diferenciais" class="mobile-menu-link text-2xl font-bold text-[var(--text-primary)]">Diferenciais</a>
+                <a href="#clientes" class="mobile-menu-link text-2xl font-bold text-[var(--text-primary)]">Clientes</a>
+                <a href="#contato" class="mobile-menu-link text-2xl font-bold text-[var(--text-primary)]">Contato</a>
+            </nav>
+        </div>
+    </div>
+
     <!-- AOS (Animate On Scroll) Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -421,9 +553,13 @@
                 once: true,
             });
 
+            // --- Seletores Globais ---
             const header = document.getElementById('main-header');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+            const mobileMenuButtonIcon = mobileMenuButton.querySelector('i');
+            const mobileMenuLinks = mobileMenuOverlay.querySelectorAll('a');
             const themeToggleBtn = document.getElementById('theme-toggle');
             const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
             const body = document.body;
@@ -443,32 +579,127 @@
                 }
             });
 
-            // --- Menu Mobile ---
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            // --- Lógica do Menu Mobile Overlay ---
+            function toggleMenu() {
+                const isMenuOpen = body.classList.contains('menu-open');
 
-            // --- Efeito de Digitação ---
-            const typingTextElement = document.getElementById('typing-text');
-            const textToType = "Monitoramento e Engenharia de Redes";
-            let i = 0;
-            function typeWriter() {
-                if (i < textToType.length) {
-                    typingTextElement.innerHTML += textToType.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
+                if (isMenuOpen) {
+                    // Close menu
+                    body.classList.remove('menu-open');
+                    mobileMenuOverlay.classList.add('opacity-0');
+                    mobileMenuOverlay.classList.add('pointer-events-none');
+                    mobileMenuButtonIcon.classList.remove('fa-times');
+                    mobileMenuButtonIcon.classList.add('fa-bars');
+                } else {
+                    // Open menu
+                    body.classList.add('menu-open');
+                    mobileMenuOverlay.classList.remove('hidden');
+                    mobileMenuOverlay.classList.remove('opacity-0');
+                    mobileMenuOverlay.classList.remove('pointer-events-none');
+                    setTimeout(() => {
+                        mobileMenuLinks.forEach((link, index) => {
+                            link.style.transitionDelay = `${index * 100}ms`;
+                        });
+                    }, 10); // Small delay for transition to trigger
+                    mobileMenuButtonIcon.classList.remove('fa-bars');
+                    mobileMenuButtonIcon.classList.add('fa-times');
                 }
             }
-            if(typingTextElement) typeWriter();
+
+            mobileMenuButton.addEventListener('click', toggleMenu);
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu); // Close menu on link click
+            });
+            mobileMenuOverlay.addEventListener('click', (e) => {
+                if (e.target === mobileMenuOverlay) {
+                    toggleMenu();
+                }
+            });
+
+
+            // --- Lógica do Carrossel da Hero Section ---
+            const typingTextElement = document.getElementById('typing-text');
+            const heroDescriptionElement = document.getElementById('hero-description');
+            const heroImageContainer = document.querySelector('.hero-image-container');
+            const heroImageElement = document.getElementById('hero-image');
+            
+            const heroContent = [
+                {
+                    title: "Monitoramento e Engenharia de Redes",
+                    description: "Especialistas em garantir a máxima performance e disponibilidade da sua infraestrutura de TI com monitoramento proativo, cabeamento estruturado e suporte dedicado.",
+                    imageUrl: "https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=800&auto=format&fit=crop"
+                },
+                {
+                    title: "Cobertura Wi-Fi Total para Eventos",
+                    description: "Garantimos conectividade de alta densidade e performance para shows, feiras e conferências, proporcionando a melhor experiência para o seu público.",
+                    imageUrl: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=800&auto=format&fit=crop"
+                },
+                {
+                    title: "Infraestrutura de TI Robusta e Segura",
+                    description: "Projetamos e implementamos data centers e cabeamento estruturado que formam a espinha dorsal do seu negócio, com foco em segurança e escalabilidade.",
+                    imageUrl: "https://images.unsplash.com/photo-1558008258-3256797b43f3?q=80&w=800&auto=format&fit=crop"
+                }
+            ];
+
+            let currentHeroIndex = 0;
+            let typeTimeout;
+            let intervalId;
+
+            function typeWriter(text, i = 0) {
+                if (typingTextElement && i < text.length) {
+                    typingTextElement.innerHTML += text.charAt(i);
+                    typeTimeout = setTimeout(() => typeWriter(text, i + 1), 50);
+                }
+            }
+
+            function updateHeroContent() {
+                // Adiciona efeito de fade-out
+                heroDescriptionElement.style.opacity = 0;
+                if (heroImageContainer) heroImageContainer.style.opacity = 0;
+
+                setTimeout(() => {
+                    const content = heroContent[currentHeroIndex];
+                    
+                    // Limpa e reinicia o efeito de digitação
+                    clearTimeout(typeTimeout);
+                    if (typingTextElement) {
+                        typingTextElement.innerHTML = '';
+                        typeWriter(content.title);
+                    }
+
+                    // Atualiza a descrição e a imagem
+                    heroDescriptionElement.textContent = content.description;
+                    if (heroImageElement) {
+                        heroImageElement.src = content.imageUrl;
+                        heroImageElement.alt = content.title; // Boa prática de acessibilidade
+                    }
+
+                    // Adiciona efeito de fade-in
+                    heroDescriptionElement.style.opacity = 1;
+                    if (heroImageContainer) heroImageContainer.style.opacity = 1;
+
+                    // Avança para o próximo slide
+                    currentHeroIndex = (currentHeroIndex + 1) % heroContent.length;
+                }, 500); // Meio segundo para o fade-out
+            }
+
+            // Inicia o carrossel
+            if (typingTextElement && heroDescriptionElement) {
+                updateHeroContent(); // Carrega o primeiro conteúdo imediatamente
+                intervalId = setInterval(updateHeroContent, 8000); // Troca a cada 8 segundos
+            }
+
 
             // --- Lógica de Troca de Tema ---
             function setIcon(theme) {
                 const icon = theme === 'light' ? 'fa-sun' : 'fa-moon';
                 const oldIcon = theme === 'light' ? 'fa-moon' : 'fa-sun';
-                themeToggleBtn.querySelector('i').classList.remove(oldIcon);
-                themeToggleBtn.querySelector('i').classList.add(icon);
-                themeToggleMobileBtn.querySelector('i').classList.remove(oldIcon);
-                themeToggleMobileBtn.querySelector('i').classList.add(icon);
+                if (themeToggleBtn && themeToggleMobileBtn) {
+                    themeToggleBtn.querySelector('i').classList.remove(oldIcon);
+                    themeToggleBtn.querySelector('i').classList.add(icon);
+                    themeToggleMobileBtn.querySelector('i').classList.remove(oldIcon);
+                    themeToggleMobileBtn.querySelector('i').classList.add(icon);
+                }
             }
             
             function setTheme(theme) {
@@ -489,8 +720,10 @@
                 setTheme(newTheme);
             }
 
-            themeToggleBtn.addEventListener('click', toggleTheme);
-            themeToggleMobileBtn.addEventListener('click', toggleTheme);
+            if (themeToggleBtn && themeToggleMobileBtn) {
+                themeToggleBtn.addEventListener('click', toggleTheme);
+                themeToggleMobileBtn.addEventListener('click', toggleTheme);
+            }
             
             // --- Carregar Tema Salvo ---
             const savedTheme = localStorage.getItem('theme');
